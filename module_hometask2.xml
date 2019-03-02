@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_hometask2" default="compile.module.hometask2">
+  <dirname property="module.hometask2.basedir" file="${ant.file.module_hometask2}"/>
+  
+  <property name="module.jdk.home.hometask2" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.hometask2" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.hometask2" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.hometask2" value="-encoding UTF-8 -source 7 -target 7 ${compiler.args}"/>
+  
+  <property name="hometask2.output.dir" value="${module.hometask2.basedir}/target/classes"/>
+  <property name="hometask2.testoutput.dir" value="${module.hometask2.basedir}/target/test-classes"/>
+  
+  <path id="hometask2.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="hometask2.module.production.classpath">
+    <path refid="${module.jdk.classpath.hometask2}"/>
+    <path refid="library.maven:_org.apache.poi:poi:4.0.1.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.11.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-collections4:4.2.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-math3:3.6.1.classpath"/>
+    <path refid="library.maven:_org.xerial:sqlite-jdbc:3.25.2.classpath"/>
+    <path refid="library.maven:_maven:maven-pdf-plugin:2.5.1.classpath"/>
+    <path refid="library.maven:_fop:fop:0.20.5.classpath"/>
+    <path refid="library.maven:_batik:batik-1.5-fop:0.20-5.classpath"/>
+    <path refid="library.maven:_batik:batik:1.5-fop-0.20-5.classpath"/>
+    <path refid="library.maven:_avalon-framework:avalon-framework:4.1.5.classpath"/>
+    <path refid="library.maven:_xml-apis:xml-apis:1.3.03.classpath"/>
+    <path refid="library.maven:_xml-resolver:xml-resolver:1.1.classpath"/>
+    <path refid="library.maven:_xerces:xercesimpl:2.8.0.classpath"/>
+    <path refid="library.maven:_xalan:xalan:2.7.0.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.1.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-utils:1.1.classpath"/>
+  </path>
+  
+  <path id="hometask2.runtime.production.module.classpath">
+    <pathelement location="${hometask2.output.dir}"/>
+    <path refid="library.maven:_org.apache.poi:poi:4.0.1.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.11.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-collections4:4.2.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-math3:3.6.1.classpath"/>
+    <path refid="library.maven:_org.xerial:sqlite-jdbc:3.25.2.classpath"/>
+    <path refid="library.maven:_maven:maven-pdf-plugin:2.5.1.classpath"/>
+    <path refid="library.maven:_fop:fop:0.20.5.classpath"/>
+    <path refid="library.maven:_batik:batik-1.5-fop:0.20-5.classpath"/>
+    <path refid="library.maven:_batik:batik:1.5-fop-0.20-5.classpath"/>
+    <path refid="library.maven:_avalon-framework:avalon-framework:4.1.5.classpath"/>
+    <path refid="library.maven:_xml-apis:xml-apis:1.3.03.classpath"/>
+    <path refid="library.maven:_xml-resolver:xml-resolver:1.1.classpath"/>
+    <path refid="library.maven:_xerces:xercesimpl:2.8.0.classpath"/>
+    <path refid="library.maven:_xalan:xalan:2.7.0.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.1.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-utils:1.1.classpath"/>
+  </path>
+  
+  <path id="hometask2.module.classpath">
+    <path refid="${module.jdk.classpath.hometask2}"/>
+    <pathelement location="${hometask2.output.dir}"/>
+    <path refid="library.maven:_org.apache.poi:poi:4.0.1.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.11.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-collections4:4.2.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-math3:3.6.1.classpath"/>
+    <path refid="library.maven:_org.xerial:sqlite-jdbc:3.25.2.classpath"/>
+    <path refid="library.maven:_maven:maven-pdf-plugin:2.5.1.classpath"/>
+    <path refid="library.maven:_fop:fop:0.20.5.classpath"/>
+    <path refid="library.maven:_batik:batik-1.5-fop:0.20-5.classpath"/>
+    <path refid="library.maven:_batik:batik:1.5-fop-0.20-5.classpath"/>
+    <path refid="library.maven:_avalon-framework:avalon-framework:4.1.5.classpath"/>
+    <path refid="library.maven:_xml-apis:xml-apis:1.3.03.classpath"/>
+    <path refid="library.maven:_xml-resolver:xml-resolver:1.1.classpath"/>
+    <path refid="library.maven:_xerces:xercesimpl:2.8.0.classpath"/>
+    <path refid="library.maven:_xalan:xalan:2.7.0.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.1.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-utils:1.1.classpath"/>
+  </path>
+  
+  <path id="hometask2.runtime.module.classpath">
+    <pathelement location="${hometask2.testoutput.dir}"/>
+    <pathelement location="${hometask2.output.dir}"/>
+    <path refid="library.maven:_org.apache.poi:poi:4.0.1.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.11.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-collections4:4.2.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-math3:3.6.1.classpath"/>
+    <path refid="library.maven:_org.xerial:sqlite-jdbc:3.25.2.classpath"/>
+    <path refid="library.maven:_maven:maven-pdf-plugin:2.5.1.classpath"/>
+    <path refid="library.maven:_fop:fop:0.20.5.classpath"/>
+    <path refid="library.maven:_batik:batik-1.5-fop:0.20-5.classpath"/>
+    <path refid="library.maven:_batik:batik:1.5-fop-0.20-5.classpath"/>
+    <path refid="library.maven:_avalon-framework:avalon-framework:4.1.5.classpath"/>
+    <path refid="library.maven:_xml-apis:xml-apis:1.3.03.classpath"/>
+    <path refid="library.maven:_xml-resolver:xml-resolver:1.1.classpath"/>
+    <path refid="library.maven:_xerces:xercesimpl:2.8.0.classpath"/>
+    <path refid="library.maven:_xalan:xalan:2.7.0.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.1.classpath"/>
+    <path refid="library.maven:_org.codehaus.plexus:plexus-utils:1.1.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.hometask2">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.hometask2">
+    <patternset refid="excluded.from.module.hometask2"/>
+  </patternset>
+  
+  <path id="hometask2.module.sourcepath">
+    <dirset dir="${module.hometask2.basedir}">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  <path id="hometask2.module.test.sourcepath">
+    <dirset dir="${module.hometask2.basedir}">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.hometask2" depends="compile.module.hometask2.production,compile.module.hometask2.tests" description="Compile module Hometask2"/>
+  
+  <target name="compile.module.hometask2.production" depends="register.custom.compilers" description="Compile module Hometask2; production classes">
+    <mkdir dir="${hometask2.output.dir}"/>
+    <javac2 destdir="${hometask2.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.hometask2}/javac">
+      <compilerarg line="${compiler.args.hometask2}"/>
+      <bootclasspath refid="hometask2.module.bootclasspath"/>
+      <classpath refid="hometask2.module.production.classpath"/>
+      <src refid="hometask2.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.hometask2"/>
+    </javac2>
+    
+    <copy todir="${hometask2.output.dir}">
+      <fileset dir="${module.hometask2.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.hometask2.basedir}/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.hometask2.tests" depends="register.custom.compilers,compile.module.hometask2.production" description="compile module Hometask2; test classes" unless="skip.tests">
+    <mkdir dir="${hometask2.testoutput.dir}"/>
+    <javac2 destdir="${hometask2.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.hometask2}/javac">
+      <compilerarg line="${compiler.args.hometask2}"/>
+      <bootclasspath refid="hometask2.module.bootclasspath"/>
+      <classpath refid="hometask2.module.classpath"/>
+      <src refid="hometask2.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.hometask2"/>
+    </javac2>
+    
+    <copy todir="${hometask2.testoutput.dir}">
+      <fileset dir="${module.hometask2.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.hometask2" description="cleanup module">
+    <delete dir="${hometask2.output.dir}"/>
+    <delete dir="${hometask2.testoutput.dir}"/>
+  </target>
+</project>
