@@ -185,10 +185,10 @@
     <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
     <property name="artifact.output.hometask2:jar" value="${basedir}/out/artifacts/Hometask2_jar"/>
     <mkdir dir="${artifacts.temp.dir}"/>
-    <property name="temp.jar.path.Hometask2.jar" value="${artifacts.temp.dir}/Hometask2.jar"/>
+    <property name="temp.jar.path.MainClass.jar" value="${artifacts.temp.dir}/Hometask2.jar"/>
   </target>
   
-  <target name="artifact.hometask2:jar" depends="init.artifacts, compile.module.hometask2" description="Build &#39;Hometask2:jar&#39; artifact">
+  <target name="artifact.hometask2:jar" depends="init.artifacts, compile.module.hometask2" description="Build &#39;MainClass:jar&#39; artifact">
     <property name="artifact.temp.output.hometask2:jar" value="${artifacts.temp.dir}/Hometask2_jar"/>
     <mkdir dir="${artifact.temp.output.hometask2:jar}"/>
     <jar destfile="${temp.jar.path.Hometask2.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">

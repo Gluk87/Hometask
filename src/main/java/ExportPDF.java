@@ -42,7 +42,7 @@ class ExportPDF {
                 table.addCell(pdfcell);
             }
 
-            for (int rownum = 0; rownum < Hometask2.genNum; rownum++) {
+            for (int rownum = 0; rownum < MainClass.genNum; rownum++) {
                 for (int cellnum = 1; cellnum <= DB.countColumns(); cellnum++) {
                     table.addCell(new PdfPCell(new Phrase(DB.readTable(cellnum).get(rownum), normalFont)));
                 }

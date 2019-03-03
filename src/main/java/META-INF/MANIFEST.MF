@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: Hometask2
+Main-Class: MainClass
 Class-Path: sqlite-jdbc-3.25.2.jar plexus-utils-1.1.jar commons-lang-2.1.jar poi-4.0.1.jar itextpdf-5.5.13

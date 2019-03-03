@@ -120,9 +120,9 @@
   </path>
   
   
-  <target name="compile.module.hometask2" depends="compile.module.hometask2.production,compile.module.hometask2.tests" description="Compile module Hometask2"/>
+  <target name="compile.module.hometask2" depends="compile.module.hometask2.production,compile.module.hometask2.tests" description="Compile module MainClass"/>
   
-  <target name="compile.module.hometask2.production" depends="register.custom.compilers" description="Compile module Hometask2; production classes">
+  <target name="compile.module.hometask2.production" depends="register.custom.compilers" description="Compile module MainClass; production classes">
     <mkdir dir="${hometask2.output.dir}"/>
     <javac2 destdir="${hometask2.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.hometask2}/javac">
       <compilerarg line="${compiler.args.hometask2}"/>
@@ -144,7 +144,7 @@
     </copy>
   </target>
   
-  <target name="compile.module.hometask2.tests" depends="register.custom.compilers,compile.module.hometask2.production" description="compile module Hometask2; test classes" unless="skip.tests">
+  <target name="compile.module.hometask2.tests" depends="register.custom.compilers,compile.module.hometask2.production" description="compile module MainClass; test classes" unless="skip.tests">
     <mkdir dir="${hometask2.testoutput.dir}"/>
     <javac2 destdir="${hometask2.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.hometask2}/javac">
       <compilerarg line="${compiler.args.hometask2}"/>

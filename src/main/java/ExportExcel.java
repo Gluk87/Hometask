@@ -39,7 +39,7 @@ class ExportExcel {
 
     // Заполняем строки данными
     private static void createRows() throws SQLException {
-        for(int rownum = 1; rownum<= Hometask2.genNum; rownum++) {
+        for(int rownum = 1; rownum<= MainClass.genNum; rownum++) {
             HSSFRow row = sheet.createRow(rownum);
             for (int cellnum=0; cellnum<DB.countColumns(); cellnum++ ) {
                 HSSFCell cell = row.createCell(cellnum, CellType.STRING);

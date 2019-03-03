@@ -66,9 +66,9 @@ class DB {
                      "(select nameMen.column, surnameMen.column, scndnameMen.column, 'М' from nameMen, surnameMen, scndnameMen " +
                      "union " +
                      "select nameWomen.column, surnameWomen.column, scndnameWomen.column, 'Ж' from nameWomen, surnameWomen, scndnameWomen) " +
-                     "order by random() limit " + Hometask2.genNum + ";");
+                     "order by random() limit " + MainClass.genNum + ";");
 
-        for (int i = 1; i<= Hometask2.genNum; i++) {
+        for (int i = 1; i<= MainClass.genNum; i++) {
             statmt.execute("update 'people' set 'postcode'=(select abs(random())%(200000-100000)+100000) where id="+i+"; ");
             statmt.execute("update 'people' set 'inn'=77||(select abs(random())%(9999999999-1000000000)+1000000000) where id="+i+"; ");
             statmt.execute("update 'people' set 'birthdate'=(" +

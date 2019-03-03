@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Created by Azat Sultangulov on 28.02.2019.
  */
-public class Hometask2 {
+public class MainClass {
     static int genNum;
 
     public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {

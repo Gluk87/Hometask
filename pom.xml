@@ -27,7 +27,7 @@
                 <archive>
                     <manifest>
                         <addClasspath>true</addClasspath>
-                        <mainClass>Hometask2</mainClass>
+                        <mainClass>MainClass</mainClass>
                     </manifest>
                 </archive>
             </configuration>
@@ -38,7 +38,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>Hometask2</mainClass>
+                            <mainClass>MainClass</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
