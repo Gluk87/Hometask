@@ -47,6 +47,8 @@ public class Hometask2 {
         DB.createPeople();
         ExportExcel.writeIntoExcel();
         System.out.println("Файл Excel создан. Путь: "+System.getProperty("user.dir")+"\\peoples.xls");
+        ExportPDF.writeIntoPdf();
+        System.out.println("Файл PDF создан. Путь: "+System.getProperty("user.dir")+"\\peoples.pdf");
         DB.closeDB();
     }
 

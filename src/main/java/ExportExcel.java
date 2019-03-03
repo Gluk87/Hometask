@@ -9,6 +9,8 @@ class ExportExcel {
 
     private static HSSFWorkbook book;
     private static HSSFSheet sheet;
+    static String[] headline = {"№", "Имя", "Фамилия", "Отчество", "Возраст", "Пол", "Дата рождения", "ИНН",
+            "Почтовый индекс", "Страна", "Область", "Город", "Улица", "Дом", "Квартира"};
 
     static void writeIntoExcel() throws IOException, SQLException {
         book = new HSSFWorkbook();
@@ -21,9 +23,6 @@ class ExportExcel {
 
     //Создаем заголовок
     private static void createHeadline(){
-        // Заголовки помещаем в массив
-        String[] headline = {"№", "Имя", "Фамилия", "Отчество", "Возраст", "Пол", "Дата рождения", "ИНН",
-                "Почтовый индекс", "Страна", "Область", "Город", "Улица", "Дом", "Квартира"};
         HSSFRow row = sheet.createRow(0);
         // Создаем стиль
         HSSFFont font = book.createFont();

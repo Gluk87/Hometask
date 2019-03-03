@@ -97,8 +97,6 @@ class DB {
         while(resSet.next())
         {
             String  name = resSet.getString(cellnum);
-           // String  surname = resSet.getString("surname");
-           // System.out.println( "name = " + name );
             nameList.add(name);
         }
         return nameList;
