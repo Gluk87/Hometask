@@ -2,7 +2,10 @@ package mypackage;
 
 import com.google.gson.Gson;
 import mypackage.postmodel.POJO;
-import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import static mypackage.Generator.getCountry;
 
@@ -19,27 +22,34 @@ class ParseJSON {
     }
 
     //Парсим JSON и инсертим в БД
-    static void parseJSON() {
+    static void parseJson() {
         Gson gson = new Gson();
         POJO[] pojo = gson.fromJson(getLineJson(), POJO[].class);
+
+        DateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+
         for (POJO aPojo : pojo) {
             try {
-                DB.insertToMainTable(
-                        aPojo.getName().getFirst(),
-                        aPojo.getName().getLast(),
-                        aPojo.getDob().getAge(),
-                        Generator.getGenderApi(aPojo.getGender()),
-                        aPojo.getDob().getDate(),
-                        Generator.getInnApi(aPojo.getId().getName(),aPojo.getId().getValue()),
-                        Generator.getPostcodeApi(aPojo.getLocation().getPostcode()),
+                DatabaseApi.insertTables(
+                        // Для таблицы Address
+                        String.valueOf(Generator.getPostcodeApi(aPojo.getLocation().getPostcode())),
                         getCountry(aPojo.getNat()),
                         aPojo.getLocation().getState(),
                         aPojo.getLocation().getCity(),
                         aPojo.getLocation().getStreet(),
                         Generator.generateNum(1,200),
-                        Generator.generateNum(1,300)
+                        Generator.generateNum(1,300),
+                        //Для таблицы Persons
+                        aPojo.getName().getLast(),
+                        aPojo.getName().getFirst(),
+                        DatabaseFiles.getMiddleName(aPojo.getGender()),
+                        outputFormat.format(inputFormat.parse(aPojo.getDob().getDate().substring(0,10))),
+                        Generator.getGenderApi(aPojo.getGender()),
+                        Generator.generateInn()
+
                 );
-            } catch (SQLException e) {
+            } catch (ParseException e) {
                 e.printStackTrace();
             }
         }

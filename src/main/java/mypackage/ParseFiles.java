@@ -28,10 +28,10 @@ class ParseFiles {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    for (String sTitle : DB.fileTitle) {
+                    for (String sTitle : DatabaseFiles.fileTitle) {
                         if (file.getName().startsWith(""+ sTitle +"")) {
                             try {
-                                DB.insertToTable(""+ sTitle +"", line);
+                                DatabaseFiles.insertToTable(""+ sTitle +"", line);
                             } catch (SQLException e) {
                                 e.printStackTrace();
                             }

@@ -6,7 +6,7 @@ import java.net.UnknownHostException;
 
 class Network {
 
-    static boolean isNetworkActiv() {
+    static boolean isNetworkActive() {
         InetAddress host;
         try {
             host = InetAddress.getByName("randomuser.me");

@@ -39,12 +39,6 @@ class Generator {
         return inn;
     }
 
-    // Определяем ИНН из API
-    static String getInnApi(String id, String value) {
-        if (id.equals("")) return "";
-        else return id+": "+value;
-    }
-
     // Определяем пол из API
     static String getGenderApi(String gender) {
         if (gender.equals("female")) return "Ж";

@@ -24,7 +24,7 @@ class ExportPDF {
             PdfWriter.getInstance(document, new FileOutputStream(fileNamePdf));
             document.open();
             document.newPage();
-            createTablePdf(document,method);
+            createTablePdf(document, method);
             System.out.println("Файл PDF создан. Путь: "+fileNamePdf);
         } catch (Exception e) {
             e.printStackTrace();
@@ -44,9 +44,7 @@ class ExportPDF {
         DateFormat outputFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
         DateFormat inputFormat;
         Date date;
-        if (method.equals("Api"))
-            inputFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzzz yyyy", Locale.US);
-        else inputFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+        inputFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
 
         float[] columnWidths = new float[]{4f, 10f, 12f, 15f, 7f, 5f, 12f, 15f, 10f, 12f, 20f, 15f, 15f, 5f, 10f };
 
@@ -64,9 +62,18 @@ class ExportPDF {
             }
             for (int rownum = 0; rownum < Variables.genNum; rownum++) {
                 for (int cellnum = 1; cellnum <= Variables.columnCount; cellnum++) {
-                    pdfcell = new PdfPCell(new Phrase(DB.readTable(cellnum).get(rownum), normalFont));
+                    if (method.equals("Files"))
+                        pdfcell = new PdfPCell(new Phrase(DatabaseFiles.readTable(cellnum).get(rownum), normalFont));
+                    else pdfcell = new PdfPCell(new Phrase(DatabaseApi.readTable(cellnum, method).get(rownum), normalFont));
+
+                    if (cellnum==1) {
+                        pdfcell = new PdfPCell(new Phrase(String.valueOf((rownum+1)), normalFont));
+                    }
+
                     if (cellnum==7) {
-                        date = inputFormat.parse(mypackage.DB.readTable(cellnum).get(rownum));
+                        if (method.equals("Files"))
+                            date = inputFormat.parse(DatabaseFiles.readTable(cellnum).get(rownum));
+                        else date = inputFormat.parse(DatabaseApi.readTable(cellnum, method).get(rownum));
                         String birthDate = outputFormat.format(date);
                         pdfcell = new PdfPCell(new Phrase((birthDate), normalFont));
                     }

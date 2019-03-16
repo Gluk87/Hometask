@@ -10,12 +10,12 @@ public class Dob {
 
     @SerializedName("date")
     @Expose
-    private Date date;
+    private String date;
     @SerializedName("age")
     @Expose
     private Integer age;
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 

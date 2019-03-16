@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-class DB {
+class DatabaseFiles {
     private static Connection conn;
     private static Statement statmt;
     private static ResultSet resSet;
@@ -47,7 +47,7 @@ class DB {
     static void createMainTable() {
         try {
             statmt.execute(
-                    "CREATE TABLE if not exists 'People' (" +
+                    "CREATE TABLE if not exists 'people' (" +
                             "'id' INTEGER PRIMARY KEY, " +
                             "'name' text, " +
                             "'surname' text, " +
@@ -114,6 +114,28 @@ class DB {
             statmt.execute("update 'people' set 'flat'="+ Generator.generateNum(1,300)+" where id="+i+"; ");
         }
         statmt.execute("update 'people' set 'age'=(strftime('%s', date('now')) - strftime('%s', birthdate))/31536000; ");
+    }
+
+    // Определяем отчество
+    static String getMiddleName(String gender) {
+        String middleName = null;
+        if (gender.equals("female")) {
+            try {
+                resSet = statmt.executeQuery("SELECT column FROM ScndnameWomen order by random() limit 1");
+                middleName = resSet.getString(1);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        else
+            try {
+                resSet = statmt.executeQuery("SELECT column FROM ScndnameMen order by random() limit 1");
+                middleName = resSet.getString(1);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            return middleName;
     }
 
     // Вывод таблицы

@@ -57,18 +57,24 @@ class ExportExcel {
         DateFormat outputFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
         DateFormat inputFormat;
         Date date;
-        if (method.equals("Api"))
-        inputFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzzz yyyy", Locale.US);
-        else inputFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+        inputFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
 
         for(int rownum = 1; rownum<= Variables.genNum; rownum++) {
             HSSFRow row = sheet.createRow(rownum);
             for (int cellnum=0; cellnum<Variables.columnCount; cellnum++ ) {
                 HSSFCell cell = row.createCell(cellnum, CellType.STRING);
                 try {
-                    cell.setCellValue(DB.readTable(cellnum+1).get(rownum - 1));
+                    if (method.equals("Files"))
+                        cell.setCellValue(DatabaseFiles.readTable(cellnum+1).get(rownum - 1));
+                        else cell.setCellValue(DatabaseApi.readTable(cellnum+1, method).get(rownum - 1));
+
+                    if (cellnum==0) {
+                        cell.setCellValue(rownum);
+                    }
                     if (cellnum==6) {
-                        date = inputFormat.parse(DB.readTable(cellnum+1).get(rownum - 1));
+                        if (method.equals("Files"))
+                            date = inputFormat.parse(DatabaseFiles.readTable(cellnum+1).get(rownum - 1));
+                        else date = inputFormat.parse(DatabaseApi.readTable(cellnum+1, method).get(rownum - 1));
                         String birthDate = outputFormat.format(date);
                         cell.setCellValue(birthDate);
                     }
