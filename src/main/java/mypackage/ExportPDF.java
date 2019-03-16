@@ -64,7 +64,7 @@ class ExportPDF {
                 for (int cellnum = 1; cellnum <= Variables.columnCount; cellnum++) {
                     if (method.equals("Files"))
                         pdfcell = new PdfPCell(new Phrase(DatabaseFiles.readTable(cellnum).get(rownum), normalFont));
-                    else pdfcell = new PdfPCell(new Phrase(DatabaseApi.readTable(cellnum, method).get(rownum), normalFont));
+                    else pdfcell = new PdfPCell(new Phrase(DatabaseApi.readTable(cellnum).get(rownum), normalFont));
 
                     if (cellnum==1) {
                         pdfcell = new PdfPCell(new Phrase(String.valueOf((rownum+1)), normalFont));
@@ -73,7 +73,7 @@ class ExportPDF {
                     if (cellnum==7) {
                         if (method.equals("Files"))
                             date = inputFormat.parse(DatabaseFiles.readTable(cellnum).get(rownum));
-                        else date = inputFormat.parse(DatabaseApi.readTable(cellnum, method).get(rownum));
+                        else date = inputFormat.parse(DatabaseApi.readTable(cellnum).get(rownum));
                         String birthDate = outputFormat.format(date);
                         pdfcell = new PdfPCell(new Phrase((birthDate), normalFont));
                     }

@@ -1,23 +1,27 @@
 package mypackage;
 
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 class Network {
 
     static boolean isNetworkActive() {
-        InetAddress host;
+        boolean result = false;
+        HttpURLConnection con = null;
         try {
-            host = InetAddress.getByName("randomuser.me");
-        } catch (UnknownHostException e) {
-            return false;
+            con = (HttpURLConnection) new URL("https://randomuser.me").openConnection();
+            con.setRequestMethod("HEAD");
+            result = (con.getResponseCode() == HttpURLConnection.HTTP_OK);
+        } catch (Exception ignored) {
+        } finally {
+            if (con != null) {
+                try {
+                    con.disconnect();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
         }
-        try {
-            assert host != null;
-            return host.isReachable(1000);
-        } catch (IOException e) {
-            return false;
-        }
+        return result;
     }
 }

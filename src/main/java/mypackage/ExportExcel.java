@@ -66,7 +66,7 @@ class ExportExcel {
                 try {
                     if (method.equals("Files"))
                         cell.setCellValue(DatabaseFiles.readTable(cellnum+1).get(rownum - 1));
-                        else cell.setCellValue(DatabaseApi.readTable(cellnum+1, method).get(rownum - 1));
+                        else cell.setCellValue(DatabaseApi.readTable(cellnum+1).get(rownum - 1));
 
                     if (cellnum==0) {
                         cell.setCellValue(rownum);
@@ -74,7 +74,7 @@ class ExportExcel {
                     if (cellnum==6) {
                         if (method.equals("Files"))
                             date = inputFormat.parse(DatabaseFiles.readTable(cellnum+1).get(rownum - 1));
-                        else date = inputFormat.parse(DatabaseApi.readTable(cellnum+1, method).get(rownum - 1));
+                        else date = inputFormat.parse(DatabaseApi.readTable(cellnum+1).get(rownum - 1));
                         String birthDate = outputFormat.format(date);
                         cell.setCellValue(birthDate);
                     }

@@ -21,10 +21,11 @@ class DatabaseApi {
             String url = prop.getProperty("url");
             String user = prop.getProperty("user");
             String pass = prop.getProperty("pass");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(url, user, pass);
             stmt = conn.createStatement();
             System.out.println("БД MySQL подключена успешно.");
-        } catch (IOException | SQLException e) {
+        } catch (IOException | SQLException | ClassNotFoundException e) {
             System.out.println("БД MySQL не подключена...");
             e.printStackTrace();
         }
@@ -73,17 +74,14 @@ class DatabaseApi {
         }
     }
 
-    static List<String> readTable(int cellnum, String method) {
-        String order;
-        if (method.equals("DB")) order = "rand()"; // если нет сети берем рандомные записи
-        else order="p.id desc"; // Для API сортировка по id
+    static List<String> readTable(int cellnum) {
 
         List<String> nameList = new ArrayList<>();
         try {
             resSet = stmt.executeQuery("select p.id, p.name, p.surname, p.middlename, floor(datediff(current_date,birthdate)/365) age," +
                     " p.gender, p.birthdate, p.inn, a.postcode, a.country, a.region, a.city, a.street, a.house, a.flat" +
                     " from persons p, address a" +
-                    " where a.id = p.address_id order by "+ order + " limit "+Variables.genNum);
+                    " where a.id = p.address_id order by p.id desc limit "+Variables.genNum);
             while(resSet.next())
             {
                 String  name = resSet.getString(cellnum);

@@ -36,8 +36,8 @@ class Run {
         if (countDB>=Variables.genNum) {
             System.out.println("Количество записей  в БД MySQL: "+countDB+" >= "+Variables.genNum + " необходимых.");
             System.out.println("Записи выгружаем из БД...");
-            ExportExcel.writeIntoExcel("DB");
-            ExportPDF.writeIntoPdf("DB");
+            ExportExcel.writeIntoExcel("Api");
+            ExportPDF.writeIntoPdf("Api");
         }
         else {
             System.out.println("Количество записей  в БД MySQL: "+countDB+" < "+Variables.genNum + " необходимых.");
